@@ -1,5 +1,7 @@
 import * as github from '@actions/github'
 import * as core from '@actions/core'
+import * as pjson from '../package.json'
+import * as semver from 'semver'
 
 export interface Inputs {
   patchLabel?: string
@@ -19,6 +21,7 @@ export class Referee {
 
   async judge(): Promise<void> {
     const {owner, repo} = this.cfg
+    const {version} = pjson
 
     const client = github.getOctokit(this.cfg.token)
     const {data: pr} = await client.pulls.get({
@@ -27,15 +30,19 @@ export class Referee {
       pull_number: this.cfg.pullNumber
     })
 
+    core.debug(`Found PR number:${pr.number} title:${pr.title}`)
+
     if (
       this.cfg.majorLabel &&
       pr.labels.find(label => label.name === this.cfg.majorLabel)
     ) {
       if (this.cfg.refreshLabels) await client.issues.removeAllLabels()
+      const newVer = semver.inc(version, 'major')
+
       await client.issues.addLabels({
         owner,
         repo,
-        labels: [this.cfg.majorLabel],
+        labels: [`${this.cfg.labelPrefix}${newVer}${this.cfg.labelSuffix}`],
         issue_number: pr.number
       })
       core.setOutput('major', true)
@@ -49,11 +56,12 @@ export class Referee {
       pr.labels.find(label => label.name === this.cfg.minorLabel)
     ) {
       if (this.cfg.refreshLabels) await client.issues.removeAllLabels()
+      const newVer = semver.inc(version, 'minor')
 
       await client.issues.addLabels({
         owner,
         repo,
-        labels: [this.cfg.minorLabel],
+        labels: [`${this.cfg.labelPrefix}${newVer}${this.cfg.labelSuffix}`],
         issue_number: pr.number
       })
       core.setOutput('major', false)
@@ -67,10 +75,12 @@ export class Referee {
       pr.labels.find(label => label.name === this.cfg.patchLabel)
     ) {
       if (this.cfg.refreshLabels) await client.issues.removeAllLabels()
+      const newVer = semver.inc(version, 'patch')
+
       await client.issues.addLabels({
         owner,
         repo,
-        labels: [this.cfg.patchLabel],
+        labels: [`${this.cfg.labelPrefix}${newVer}${this.cfg.labelSuffix}`],
         issue_number: pr.number
       })
       core.setOutput('major', false)

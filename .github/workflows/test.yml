@@ -1,7 +1,7 @@
 name: Test
 on:
-  push:
   pull_request:
+    types: [labeled]
 
 jobs:
   patch:
@@ -9,28 +9,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Add labels
-        uses: KeisukeYamashita/attach-labels@v1
-        with:
-          labels: patch
       - uses: ./
+        with:
+          labelPrefix: 'release/targe-'
   minor:
     name: Minor
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Add labels
-        uses: KeisukeYamashita/attach-labels@v1
-        with:
-          labels: minor
       - uses: ./
+        with:
+          labelPrefix: 'release/targe-'
   major:
     name: Major
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Add labels
-        uses: KeisukeYamashita/attach-labels@v1
-        with:
-          labels: major
       - uses: ./
+        with:
+          labelPrefix: 'release/target-'
