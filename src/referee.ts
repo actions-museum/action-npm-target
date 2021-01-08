@@ -1,7 +1,7 @@
 import * as github from '@actions/github'
 import * as core from '@actions/core'
 import * as pjson from '../package.json'
-import semver from 'semver'
+import * as semver from 'semver'
 
 export interface Inputs {
   patchLabel?: string
