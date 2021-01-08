@@ -21,7 +21,7 @@ Specify the target label.
 ```yml
 on: 
   pull_request:
-    - labeled
+    - types: [labeled]
 jobs:
   auto-merge:
     - name: Merge

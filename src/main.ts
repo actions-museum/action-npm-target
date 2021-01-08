@@ -10,11 +10,11 @@ async function run(): Promise<void> {
 
   try {
     const inputs: Inputs = {
-      patchLabel: core.getInput('patchLabel') ?? 'patch',
-      minorLabel: core.getInput('minorLabel') ?? 'minor',
-      majorLabel: core.getInput('majorLabel') ?? 'major',
+      patchLabel: core.getInput('patchLabel') === '' ? core.getInput('patchLabel') : 'patch',
+      minorLabel: core.getInput('minorLabel') === '' ? core.getInput('minorLabel') : 'minor',
+      majorLabel: core.getInput('majorLabel') === '' ? core.getInput('majorLabel') : 'major',
       labelSuffix: core.getInput('labelSuffix'),
-      labelPrefix: core.getInput('labelPrefix') ?? 'release/',
+      labelPrefix: core.getInput('labelPrefix') === '' ? core.getInput('labelPrefix') : 'release/',
       token: core.getInput('token', {required: true}),
       owner: github.context.repo.owner,
       repo: github.context.repo.repo,

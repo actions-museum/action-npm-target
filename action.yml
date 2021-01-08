@@ -14,7 +14,7 @@ inputs:
   labelSuffix:
     required: false
     description: 'Sufix to add to the label'
-  labelPreffix:
+  labelPrefix:
     required: false
     description: 'Prefix to add to the label'
     default: 'release/'

@@ -49,24 +49,23 @@ var github = __nccwpck_require__(5438);
 var referee_1 = __nccwpck_require__(9019);
 var util_1 = __nccwpck_require__(1669);
 function run() {
-    var _a, _b, _c, _d;
     return __awaiter(this, void 0, void 0, function () {
         var inputs, referee, error_1;
-        return __generator(this, function (_e) {
-            switch (_e.label) {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
                 case 0:
                     if (!github.context.payload.pull_request) {
                         throw new Error('should not use for not "pull_request" type workflow');
                     }
-                    _e.label = 1;
+                    _a.label = 1;
                 case 1:
-                    _e.trys.push([1, 3, , 4]);
+                    _a.trys.push([1, 3, , 4]);
                     inputs = {
-                        patchLabel: (_a = core.getInput('patchLabel')) !== null && _a !== void 0 ? _a : 'patch',
-                        minorLabel: (_b = core.getInput('minorLabel')) !== null && _b !== void 0 ? _b : 'minor',
-                        majorLabel: (_c = core.getInput('majorLabel')) !== null && _c !== void 0 ? _c : 'major',
+                        patchLabel: core.getInput('patchLabel') === '' ? core.getInput('patchLabel') : 'patch',
+                        minorLabel: core.getInput('minorLabel') === '' ? core.getInput('minorLabel') : 'minor',
+                        majorLabel: core.getInput('majorLabel') === '' ? core.getInput('majorLabel') : 'major',
                         labelSuffix: core.getInput('labelSuffix'),
-                        labelPrefix: (_d = core.getInput('labelPrefix')) !== null && _d !== void 0 ? _d : 'release/',
+                        labelPrefix: core.getInput('labelPrefix') === '' ? core.getInput('labelPrefix') : 'release/',
                         token: core.getInput('token', { required: true }),
                         owner: github.context.repo.owner,
                         repo: github.context.repo.repo,
@@ -77,10 +76,10 @@ function run() {
                     referee = new referee_1.Referee(inputs);
                     return [4 /*yield*/, referee.judge()];
                 case 2:
-                    _e.sent();
+                    _a.sent();
                     return [3 /*break*/, 4];
                 case 3:
-                    error_1 = _e.sent();
+                    error_1 = _a.sent();
                     core.setFailed(error_1.message);
                     return [3 /*break*/, 4];
                 case 4: return [2 /*return*/];
