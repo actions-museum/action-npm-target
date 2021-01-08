@@ -1,0 +1,32 @@
+name: Test
+on:
+  pull_request:
+
+jobs:
+  patch:
+    name: Patch
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Add labels
+        uses: KeisukeYamashita/attach-labels@v1
+        with:
+          labels: patch
+  minor:
+    name: Minor
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Add labels
+        uses: KeisukeYamashita/attach-labels@v1
+        with:
+          labels: minor
+  major:
+    name: Major
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Add labels
+        uses: KeisukeYamashita/attach-labels@v1
+        with:
+          labels: major
