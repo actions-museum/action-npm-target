@@ -10,9 +10,9 @@ async function run(): Promise<void> {
 
   try {
     const inputs: Inputs = {
-      patchLabel: core.getInput('patchLabel'),
-      minorLabel: core.getInput('minorLabel'),
-      majorLabel: core.getInput('majorLabel'),
+      patchLabel: core.getInput('patchLabel') ?? 'patch',
+      minorLabel: core.getInput('minorLabel') ?? 'minor',
+      majorLabel: core.getInput('majorLabel') ?? 'major',
       labelSuffix: core.getInput('labelSuffix'),
       labelPrefix: core.getInput('labelPrefix') ?? 'release/',
       token: core.getInput('token', {required: true}),

@@ -3,11 +3,22 @@ on:
   pull_request:
 
 jobs:
+  remove-all-labels:
+    name: Remove all labels
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions-ecosystem/action-remove-labels@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          labels: |
+            patch
+            minor
+            major
   patch:
     name: Patch
     runs-on: ubuntu-latest
+    needs: [remove-all-labels]
     steps:
-      - uses: actions/checkout@v2
       - name: Add labels
         uses: KeisukeYamashita/attach-labels@v1
         with:
@@ -15,8 +26,8 @@ jobs:
   minor:
     name: Minor
     runs-on: ubuntu-latest
+    needs: [remove-all-labels]
     steps:
-      - uses: actions/checkout@v2
       - name: Add labels
         uses: KeisukeYamashita/attach-labels@v1
         with:
@@ -24,8 +35,8 @@ jobs:
   major:
     name: Major
     runs-on: ubuntu-latest
+    needs: [remove-all-labels]
     steps:
-      - uses: actions/checkout@v2
       - name: Add labels
         uses: KeisukeYamashita/attach-labels@v1
         with:

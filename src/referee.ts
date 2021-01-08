@@ -27,6 +27,8 @@ export class Referee {
       pull_number: this.cfg.pullNumber
     })
 
+    core.debug(`Found PR number:${pr.number} title:${pr.title}`)
+
     if (
       this.cfg.majorLabel &&
       pr.labels.find(label => label.name === this.cfg.majorLabel)
