@@ -61,9 +61,9 @@ function run() {
                 case 1:
                     _a.trys.push([1, 3, , 4]);
                     inputs = {
-                        patchLabel: core.getInput('patchLabel') === '' ? core.getInput('patchLabel') : 'patch',
-                        minorLabel: core.getInput('minorLabel') === '' ? core.getInput('minorLabel') : 'minor',
-                        majorLabel: core.getInput('majorLabel') === '' ? core.getInput('majorLabel') : 'major',
+                        patchLabel: core.getInput('patchLabel') === '' ? 'patch' : core.getInput('patchLabel'),
+                        minorLabel: core.getInput('minorLabel') === '' ? 'minor' : core.getInput('minorLabel'),
+                        majorLabel: core.getInput('majorLabel') === '' ? 'major' : core.getInput('majorLabel'),
                         labelSuffix: core.getInput('labelSuffix'),
                         labelPrefix: core.getInput('labelPrefix') === '' ? core.getInput('labelPrefix') : 'release/',
                         token: core.getInput('token', { required: true }),
