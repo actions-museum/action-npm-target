@@ -118,10 +118,10 @@ class Referee {
         return __awaiter(this, void 0, void 0, function* () {
             const { owner, repo } = this.cfg;
             const client = github.getOctokit(this.cfg.token);
-            const { data: pr } = yield client.pulls.get({
+            const { data: pr } = yield client.issues.get({
                 owner,
                 repo,
-                pull_number: this.cfg.pullNumber
+                issue_number: this.cfg.pullNumber
             });
             core.debug(`Found PR number:${pr.number} title:${pr.title}`);
             if (this.cfg.majorLabel &&
