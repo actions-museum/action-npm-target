@@ -65,7 +65,7 @@ function run() {
                         minorLabel: core.getInput('minorLabel') === '' ? 'minor' : core.getInput('minorLabel'),
                         majorLabel: core.getInput('majorLabel') === '' ? 'major' : core.getInput('majorLabel'),
                         labelSuffix: core.getInput('labelSuffix'),
-                        labelPrefix: core.getInput('labelPrefix') === '' ? core.getInput('labelPrefix') : 'release/',
+                        labelPrefix: core.getInput('labelPrefix') === '' ? 'release/' : core.getInput('labelPrefix'),
                         token: core.getInput('token', { required: true }),
                         owner: github.context.repo.owner,
                         repo: github.context.repo.repo,
