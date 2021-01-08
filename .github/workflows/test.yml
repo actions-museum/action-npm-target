@@ -10,15 +10,21 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: ./
+        with:
+          labelPrefix: 'release/targe-'
   minor:
     name: Minor
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: ./
+        with:
+          labelPrefix: 'release/targe-'
   major:
     name: Major
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: ./
+        with:
+          labelPrefix: 'release/targe-'
