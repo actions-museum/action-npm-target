@@ -173,7 +173,7 @@ var Referee = /** @class */ (function () {
                         return [4 /*yield*/, client.issues.addLabels({
                                 owner: owner,
                                 repo: repo,
-                                labels: ["" + this.cfg.labelPrefix + newVer + this.cfg.labelPrefix],
+                                labels: ["" + this.cfg.labelPrefix + newVer + this.cfg.labelSuffix],
                                 issue_number: pr.number
                             })];
                     case 4:
@@ -195,7 +195,7 @@ var Referee = /** @class */ (function () {
                         return [4 /*yield*/, client.issues.addLabels({
                                 owner: owner,
                                 repo: repo,
-                                labels: ["" + this.cfg.labelPrefix + newVer + this.cfg.labelPrefix],
+                                labels: ["" + this.cfg.labelPrefix + newVer + this.cfg.labelSuffix],
                                 issue_number: pr.number
                             })];
                     case 8:
@@ -217,7 +217,7 @@ var Referee = /** @class */ (function () {
                         return [4 /*yield*/, client.issues.addLabels({
                                 owner: owner,
                                 repo: repo,
-                                labels: ["" + this.cfg.labelPrefix + newVer + this.cfg.labelPrefix],
+                                labels: ["" + this.cfg.labelPrefix + newVer + this.cfg.labelSuffix],
                                 issue_number: pr.number
                             })];
                     case 12:

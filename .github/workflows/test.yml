@@ -27,4 +27,4 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ./
         with:
-          labelPrefix: 'release/targe-'
+          labelPrefix: 'release/target-'

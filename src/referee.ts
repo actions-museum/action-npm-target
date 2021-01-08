@@ -42,7 +42,7 @@ export class Referee {
       await client.issues.addLabels({
         owner,
         repo,
-        labels: [`${this.cfg.labelPrefix}${newVer}${this.cfg.labelPrefix}`],
+        labels: [`${this.cfg.labelPrefix}${newVer}${this.cfg.labelSuffix}`],
         issue_number: pr.number
       })
       core.setOutput('major', true)
@@ -61,7 +61,7 @@ export class Referee {
       await client.issues.addLabels({
         owner,
         repo,
-        labels: [`${this.cfg.labelPrefix}${newVer}${this.cfg.labelPrefix}`],
+        labels: [`${this.cfg.labelPrefix}${newVer}${this.cfg.labelSuffix}`],
         issue_number: pr.number
       })
       core.setOutput('major', false)
@@ -80,7 +80,7 @@ export class Referee {
       await client.issues.addLabels({
         owner,
         repo,
-        labels: [`${this.cfg.labelPrefix}${newVer}${this.cfg.labelPrefix}`],
+        labels: [`${this.cfg.labelPrefix}${newVer}${this.cfg.labelSuffix}`],
         issue_number: pr.number
       })
       core.setOutput('major', false)
