@@ -1,0 +1,49 @@
+{
+  "name": "auto-pull-request-merge",
+  "version": "1.0.1",
+  "description": "Merge PR automatically",
+  "main": "lib/main.js",
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --write **/*.ts",
+    "format-check": "prettier --check **/*.ts",
+    "lint": "eslint src/**/*.ts",
+    "package": "ncc build --source-map --license licenses.txt",
+    "test": "jest",
+    "all": "npm run build && npm run format && npm run lint && npm run package && npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KeisukeYamashita/auto-merge-on-status.git"
+  },
+  "keywords": [
+    "actions",
+    "node",
+    "setup"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0",
+    "@octokit/types": "^6.1.2",
+    "@octokit/webhooks": "^7.21.0",
+    "dayjs": "^1.9.7",
+    "node-notifier": ">=8.0.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.19",
+    "@types/node": "^14.14.14",
+    "@typescript-eslint/parser": "^4.11.0",
+    "@vercel/ncc": "^0.26.1",
+    "eslint": "^7.16.0",
+    "eslint-plugin-github": "^4.1.1",
+    "eslint-plugin-jest": "^24.1.3",
+    "jest": "^24.9.0",
+    "jest-circus": "^26.6.3",
+    "js-yaml": "^3.14.1",
+    "prettier": "2.2.1",
+    "ts-jest": "^24.3.0",
+    "typescript": "^4.1.3"
+  }
+}

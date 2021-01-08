@@ -1,0 +1,34 @@
+name: 'auto-npm-target'
+description: 'Add label for update'
+author: 'KeisukeYamashita'
+inputs:
+  patchLabel: 
+    required: false
+    description: 'Custom label that means patch update'
+  minorLabel: 
+    required: false
+    description: 'Custom label that means minor update'
+  majorLabel: 
+    required: false
+    description: 'Custom label that means major update'
+  labelSuffix:
+    required: false
+    description: 'Sufix to add to the label'
+  labelPreffix:
+    required: false
+    description: 'Prefix to add to the label'
+    default: 'release/'
+  token:
+    required: false
+    description: 'Credential to access to the repo to post the comment'
+    default: ${{ github.token }}
+  refreshLabels:
+    required: false
+    description: 'Remove all labels before attaching or not'
+    default: 'false'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+branding:
+  icon: 'bookmark'
+  color: 'gray-dark'
