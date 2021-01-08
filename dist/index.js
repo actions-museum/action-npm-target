@@ -54,8 +54,8 @@ function run() {
                 labelSuffix: core.getInput('labelSuffix'),
                 labelPrefix: (_d = core.getInput('labelPrefix')) !== null && _d !== void 0 ? _d : 'release/',
                 token: core.getInput('token', { required: true }),
-                owner: github.context.repo.repo,
-                repo: github.context.repo.owner,
+                owner: github.context.repo.owner,
+                repo: github.context.repo.repo,
                 pullNumber: github.context.payload.pull_request.number,
                 refreshLabels: core.getInput('refreshLabels') === 'true'
             };
@@ -118,10 +118,10 @@ class Referee {
         return __awaiter(this, void 0, void 0, function* () {
             const { owner, repo } = this.cfg;
             const client = github.getOctokit(this.cfg.token);
-            const { data: pr } = yield client.issues.get({
+            const { data: pr } = yield client.pulls.get({
                 owner,
                 repo,
-                issue_number: this.cfg.pullNumber
+                pull_number: this.cfg.pullNumber
             });
             core.debug(`Found PR number:${pr.number} title:${pr.title}`);
             if (this.cfg.majorLabel &&

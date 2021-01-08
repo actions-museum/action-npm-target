@@ -21,10 +21,10 @@ export class Referee {
     const {owner, repo} = this.cfg
 
     const client = github.getOctokit(this.cfg.token)
-    const {data: pr} = await client.issues.get({
+    const {data: pr} = await client.pulls.get({
       owner,
       repo,
-      issue_number: this.cfg.pullNumber
+      pull_number: this.cfg.pullNumber
     })
 
     core.debug(`Found PR number:${pr.number} title:${pr.title}`)

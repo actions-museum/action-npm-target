@@ -16,8 +16,8 @@ async function run(): Promise<void> {
       labelSuffix: core.getInput('labelSuffix'),
       labelPrefix: core.getInput('labelPrefix') ?? 'release/',
       token: core.getInput('token', {required: true}),
-      owner: github.context.repo.repo,
-      repo: github.context.repo.owner,
+      owner: github.context.repo.owner,
+      repo: github.context.repo.repo,
       pullNumber: github.context.payload.pull_request.number,
       refreshLabels: core.getInput('refreshLabels') === 'true'
     }
